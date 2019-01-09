@@ -1,0 +1,95 @@
+/*******************************************
+    common
+********************************************/
+html, body, div, h1, h2, h3, h4, h5, h6, p {
+    font-weight: normal;
+    padding: 0;
+    margin: 0;
+}
+body {
+    background-color: #f7f7f7;
+    font-family: '游ゴシック','YuGothic';
+    width: 100%;
+}
+h1 {
+    font-size: 30px;
+}
+h2 {
+    font-size: 24px;
+}
+/*******************************************
+    login
+********************************************/
+.first-main {
+    width: 300px;
+    text-align: center;
+    margin: 0 auto;
+}
+.first-main h1 {
+    margin: 150px 0 20px;
+}
+.form-controle {
+    width: 100%;
+    height: 35px;
+    margin: 0 0 0 0px;
+    border: none;
+}
+.login-err {
+    color: red;
+    text-align: left;
+    height: 15px;
+}
+.btn {
+    background-color: #3e3e3e;
+    color: #ffffff;
+    width: 100px;
+    height: 30px;
+    margin: 10px 0 15px 0;
+    border: none;
+    border-radius: 10px;
+}
+.first-main p {
+    font-size: 11px;
+}
+/*******************************************
+    sonota
+********************************************/
+.header h1 {
+    display: inline-block;
+    font-size: 30px;
+}
+.header-menu {
+    display: inline-block;
+    list-style: none;
+}
+.header-menu li {
+    display: inline-block;
+}
+
+.header-menu li > a {
+    text-decoration: none;
+}
+
+.header form {
+    display: inline-block;
+}
+
+.main {
+    background-color: #f7f7f7;
+    width: 700px;
+    margin: 0 auto;
+}
+
+.list {
+    background-color: #ffffff;
+    width: 100%;
+    margin: 0 0 10px;
+}
+
+.post-input {
+    margin: 10px 0 0 0;
+}
+.post-input [type=text],textarea {
+    width: 100%;
+    border: none;
+}
