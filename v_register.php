@@ -19,17 +19,20 @@
     <form method="post">
         <h1>Create Account</h1>
         <div class="form-group">
-            <input type="text" class="form-controle" name="username" placeholder="UserName"> <!--required-->
+            <input type="text" class="form-controle" name="username" placeholder="UserName"/>
         </div>
-        <p class="login-err">ユーザー名を入力してください。</p>
+        <p class="login-err"><?php echo isset($err['username']) ? $err['username'] :''; ?></p>
+
         <div class="form-group">
-            <input type="email" class="form-controle" name="email" placeholder="EmailAddress"> <!--required-->
+            <input type="email" class="form-controle" name="email" placeholder="EmailAddress"/>
         </div>
-        <p class="login-err">メールアドレスを入力してください。</p>
+        <p class="login-err"><?php echo isset($err['email']) ? $err['email'] :''; ?></p>
+
         <div class="form-group">
-            <input type="password" class="form-controle" name="password" placeholder="Password"> <!--required-->
+            <input type="password" class="form-controle" name="password" placeholder="Password"/>
         </div>
-        <p class="login-err">パスワードが間違っています。</p>
+        <p class="login-err"><?php echo isset($err['password']) ? $err['password'] :''; ?></p>
+
         <button type="submit" class="btn" name="register">CreateAccount</button>
         <p>Already have an account?   <a href="list.php">Login here</a></p>
     </form>

@@ -20,6 +20,7 @@
     <li><a href="post.php">記事作成</a></li>
     <li><a href="#">カテゴリ作成</a></li>
     <li><a href="#">タグ作成</a></li>
+    <li><a href="logout.php">ログアウト</a></li>
 </ul>
 <form action="" method="">
     <input type="text" name="search" value="<?php echo $searchValue?>">

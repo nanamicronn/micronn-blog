@@ -15,7 +15,12 @@ class getFormAction
      */
     function  __construct()
     {
-        $this->pdo = new PDO( PDO_DSN, DATABASE_USER, DATABASE_PASSWORD);
+        try {
+            $this->pdo = new PDO(PDO_DSN, DATABASE_USER, DATABASE_PASSWORD);
+        } catch (PDOException $e) {
+            echo 'error'.$e->getMessage();
+            die();
+        }
     }
 
     /**
@@ -68,5 +73,15 @@ class getFormAction
         $smt->execute();
         $lists = $smt->fetchAll();
         return $lists;
+    }
+    function saveDBRegisterData($data)
+    {
+        $smt = $this->pdo->prepare('INSERT INTO users(name,email,password) VALUES (:name, :email, :password)');
+        $pass = password_hash($data['password'], PASSWORD_DEFAULT);
+        $smt->bindParam(':name',$data['username'],PDO::PARAM_STR);
+        $smt->bindParam(':email',$data['email'],PDO::PARAM_STR);
+        $smt->bindParam(':password',$pass,PDO::PARAM_STR);
+        $result = $smt->execute();
+        return $result;
     }
 }
