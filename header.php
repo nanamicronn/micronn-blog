@@ -7,9 +7,9 @@
  */
 
 require_once("config.php");
-require_once ("db_access.php");
+require_once("DbAccess.php");
 
-$action = new getFormAction();
+$action = new DbAccess();
 $eventId = null;
 
 if(isset($_GET['search'])){

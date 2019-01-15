@@ -8,8 +8,13 @@ ini_set('display_errors', 1);
  */
 
 require_once ("config.php");
-require_once ("db_access.php");
+require_once("DbAccess.php");
 require_once ("header.php");
+
+if(!isset($_SESSION['userid'])){
+    session_start();
+    $userid = $_SESSION['userid'];
+}
 
 $isEdit = false;
 //イベントID???
@@ -23,21 +28,22 @@ switch ($eventId)
 {
     //DBsave
     case 'save':
-        $action->saveDbPostData($_POST);
-        require ("list.php");
+        $action->saveDbPostData($_POST, $userid);
+//        require ("list.php");
+        header('location: list.php');
         break;
 
     //検索ボタン
     case 'search':
-        $lists = $action->searchDbListData($_GET);
-        var_dump($lists);
+        $lists = $action->searchDbListData($_GET,$userid);
         require 'v_list.php';
         break;
 
     //編集完了ボタン
     case 'editok':
-        $action->editDbListData($_POST);
-        require ("list.php");
+        $action->editDbListData($_POST,$userid);
+//        require ("list.php");
+        header('location: list.php');
         break;
 
     //初回アクセス時、投稿画面表示

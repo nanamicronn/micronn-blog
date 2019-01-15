@@ -19,15 +19,15 @@
 <form method="post">
     <h1>Log into nanablog</h1>
     <div class="form-group">
-        <input type="email" class="form-controle" name="email" placeholder="EmailAddress"> <!--required-->
+        <input type="email" class="form-controle" name="email" placeholder="EmailAddress" value="<?php echo isset($_POST['email']) ? $_POST['email'] :''; ?>"> <!--required-->
     </div>
-    <p class="login-err">メールアドレスを入力してください。</p>
+    <p class="login-err"><?php echo isset($err['email']) ? $err['email'] :''; ?></p>
     <div class="form-group">
-        <input type="password" class="form-controle" name="password" placeholder="Password"> <!--required-->
+        <input type="password" class="form-controle" name="password" placeholder="Password" value="<?php echo isset($_POST['password']) ? $_POST['password'] :'';?>"> <!--required-->
     </div>
-    <p class="login-err">パスワードが間違っています。</p>
+    <p class="login-err"><?php echo isset($err['password']) ? $err['password'] :''; ?></p>
     <button type="submit" class="btn" name="login">Login</button>
-    <p>Dont't have an a ccount?  <a href="list.php">createAccount</a></p>
+    <p>Dont't have an a ccount?  <a href="register.php">createAccount</a></p>
 </form>
 </div>
 

@@ -7,12 +7,13 @@
  * Time: 15:05
  */
 require_once("config.php");
-require_once ("db_access.php");
+require_once("DbAccess.php");
 require_once ("header.php");
 
-//$action = new getFormAction();
-//
-//$eventId = null;
+if(!isset($_SESSION['userid'])){
+    session_start();
+    $userid = $_SESSION['userid'];
+}
 
 if(isset($_POST['delete'])) {
     $eventId = "delete";
@@ -26,7 +27,7 @@ switch ($eventId)
     //削除ボタン
     case 'delete':
         $action->deleteDbListData($_POST);
-        $lists = $action->selectDbLisData();
+        $lists = $action->selectDbLisData($userid);
         require 'v_list.php';
         break;
 
@@ -44,7 +45,7 @@ switch ($eventId)
 
     //初回アクセス時、投稿画面表示
     default:
-        $lists = $action->selectDbLisData();
+        $lists = $action->selectDbLisData($userid);
         require 'v_list.php';
         break;
 }
