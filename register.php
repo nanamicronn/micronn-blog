@@ -27,7 +27,7 @@ $err = [];
 if(isset($_POST['register'])) {
 //未入力チェック
     foreach ($_POST as $key => $value) {
-        if ($validation->blankCheck($_POST[$key])) {
+        if ($validation->isblankCheck($_POST[$key])) {
             $err[$key] = "";
             switch ($key) {
                 case 'username':

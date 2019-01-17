@@ -1,7 +1,7 @@
 /*******************************************
     common
 ********************************************/
-html, body, div, h1, h2, h3, h4, h5, h6, p {
+html, body, form, div, h1, h2, h3, h4, h5, h6, p {
     font-weight: normal;
     padding: 0;
     margin: 0;
@@ -16,6 +16,9 @@ h1 {
 }
 h2 {
     font-size: 24px;
+}
+.main p {
+    font-size: 17px;
 }
 /*******************************************
     login
@@ -54,42 +57,155 @@ h2 {
 /*******************************************
     sonota
 ********************************************/
+.header {
+    background-color: #3e3e3e;
+    text-align: right;
+    position: relative;
+}
 .header h1 {
     display: inline-block;
+    position: absolute;
+    color: #f7f7f7;
     font-size: 30px;
+    top: 12px;
+    left: 5px;
 }
 .header-menu {
     display: inline-block;
     list-style: none;
+    margin-top: 21px;
 }
 .header-menu li {
     display: inline-block;
 }
 
 .header-menu li > a {
+    color: #f7f7f7;
     text-decoration: none;
+    margin-right: 10px;
 }
 
 .header form {
     display: inline-block;
+    margin: 15px 5px 21px 0;
+}
+.header input[type=text] {
+    border: none;
+    height: 22px;
 }
 
 .main {
     background-color: #f7f7f7;
     width: 700px;
-    margin: 0 auto;
+    margin: 10px auto 0;
 }
 
 .list {
+    display: inline-block;
     background-color: #ffffff;
     width: 100%;
     margin: 0 0 10px;
 }
 
+p.list-date{
+    color: #3e3e3e;
+    font-size: 11px;
+}
+
 .post-input {
     margin: 10px 0 0 0;
 }
-.post-input [type=text],textarea {
+.post-input input[type=text] {
+    height: 26px;
+}
+.post-input textarea {
+    height: 300px;
+    resize:  none;
+}
+.post-input input[type=text],textarea {
+    font-size: 17px;
     width: 100%;
     border: none;
+}
+
+.post-input-category {
+    width: 100%;
+    position: relative;
+    display: inline-block;
+}
+
+select, option{
+    font-size: 17px;
+    width: 100%;
+    height: 26px;
+    line-height: 26px;
+    padding: 0px;
+    margin: 0;
+    background-color: #ffffff;
+    border: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+.post-input-category:after {
+    content: "▼";
+    color: #3e3e3e;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    margin-right: 5px;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+/*******************************************
+    カテゴリ
+********************************************/
+
+.category-input input[type=text] {
+    font-size: 17px;
+    margin-bottom: 10px;
+    width: 300px;
+    height: 26px;
+    border: none;
+}
+.category {
+    display: inline-block;
+    background-color: #ffffff;
+    width: 100%;
+    margin: 0 0 10px;
+}
+.category p {
+    display: inline-block;
+}
+.category form {
+    display: inline-block;
+    float: right;
+}
+
+/*******************************************
+    タグ
+********************************************/
+
+.tag-input input[type=text] {
+    font-size: 17px;
+    margin-bottom: 10px;
+    width: 300px;
+    height: 26px;
+    border: none;
+}
+.tag {
+    display: inline-block;
+    background-color: #ffffff;
+    width: 100%;
+    margin: 0 0 10px;
+}
+.tag p {
+    display: inline-block;
+}
+.tag form {
+    display: inline-block;
+    float: right;
 }

@@ -4,7 +4,7 @@
 class Validation
 {
     //未入力チェック
-    function blankCheck($value)
+    function isblankCheck($value)
     {
         return empty($value);
     }
@@ -31,7 +31,7 @@ class Validation
     //文字数制限（〜50文字）
     function length_50Check($value)
     {
-        //半角2文字以上8文字以下
+        //50文字以上
         if($value > 50){
             return true;
         } else {

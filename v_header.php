@@ -18,12 +18,12 @@
 <ul class="header-menu">
     <li><a href="list.php">記事一覧</a></li>
     <li><a href="post.php">記事作成</a></li>
-    <li><a href="#">カテゴリ作成</a></li>
-    <li><a href="#">タグ作成</a></li>
+    <li><a href="category.php">カテゴリ作成</a></li>
+    <li><a href="tag.php">タグ作成</a></li>
     <li><a href="logout.php">ログアウト</a></li>
 </ul>
-<form action="" method="">
-    <input type="text" name="search" value="<?php echo $searchValue?>">
-    <input type="submit" name="" value="検索">
+<form action="list.php" method="get">
+    <input type="text" name="searchvalue" value="<?php echo isset($tt) ? $tt : '';?>">
+    <input type="submit" name="search" value="検索">
 </form>
 </div>
