@@ -4,7 +4,7 @@ require_once ('Entity.php');
 
 class CategoryEntity extends Entity
 {
-    function add($data,$userid) //saveDbCategoryData
+    function add(array $data, int $userid) //saveDbCategoryData
     {
         $smt = $this->pdo->prepare('INSERT INTO categories(name,user_id) VALUES (:name, :user_id)');
         $smt->bindParam(':name',$data['category'],PDO::PARAM_STR);
@@ -43,7 +43,7 @@ class CategoryEntity extends Entity
         $smt = $this->pdo->prepare("SELECT * FROM categories WHERE id=:categoryId");
         $smt->bindParam(':categoryId',$data['categoryId'],PDO::PARAM_STR);
         $smt->execute();
-        $ry = $smt->fetch();
-        return $ry;
+        $result = $smt->fetch();
+        return $result;
     }
 }

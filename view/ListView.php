@@ -11,11 +11,16 @@
                     <span>#<?php echo $taglist;?> </span>
                 <?php };?>
             </p>
-            <form action="./delete" method="post">
+            <div class="list-btn">
+            <form action="./post/delete" method="post">
                 <input type="hidden" name="postId" value="<?php echo $list['id'];?>">
                 <input type="submit" name="delete" value="削除">
+            </form>
+            <form action="./post/edit" method="post">
+                <input type="hidden" name="postId" value="<?php echo $list['id'];?>">
                 <input type="submit" name="edit" value="編集">
             </form>
+            </div>
         </div>
     <?php }?>
 </div>

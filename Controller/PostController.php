@@ -1,7 +1,6 @@
 <?php
 ini_set('display_errors', 1);
 
-
 require_once ('Controller.php');
 require_once ('./Entity/PostEntity.php');
 require_once ('./Entity/CategoryEntity.php');
@@ -15,13 +14,13 @@ class PostController extends Controller
         //ユーザーID（仮）
         $userid = 64;
 
-        $categorEntity = new CategoryEntity();
+        $categoryEntity = new CategoryEntity();
         $tagEntity = new TagEntity();
 
-        //カテゴリテーブル取得
-        $categories = $categorEntity->get($userid);
+        //カテゴリ テーブル取得
+        $categories = $categoryEntity->get($userid);
 
-        //タグテーブル取得
+        //タグ テーブル取得
         $tags = $tagEntity->get($userid);
 
         require ('./view/PostView.php');
@@ -35,14 +34,14 @@ class PostController extends Controller
         $tagEntity = new TagEntity();
         $posttagEntity = new PostTagEntity();
 
-        //記事テーブル登録
+        //記事 テーブル登録
         $postEntity->add($_POST, $userid);
 
-        //記事テーブル取得（記事一覧）←postid取得の為
+        //記事 テーブル取得（記事一覧）←postid取得の為
         $lists = $postEntity->get($userid);
         $postid = $lists[0][0];
 
-        //タグテーブル取得
+        //タグ テーブル取得
         $tags = $tagEntity->get($userid);
 
         //チェックインされたタグチェックボックスを選別
@@ -64,7 +63,7 @@ class PostController extends Controller
         $postEntity = new PostEntity();
         $posttagEntity = new PostTagEntity();
 
-        //記事テーブル取得（記事一覧）
+        //記事 テーブル取得（記事一覧）
         $lists = $postEntity->get($userid);
 
         //チェックインされたタグチェックボックスを選別
@@ -90,6 +89,60 @@ class PostController extends Controller
         //記事削除
         $postEntity->delete($_POST);
 
-        header('Location: ./list');
+        header('Location: ../list');
     }
+
+    public function edit()
+    {
+        //ユーザーID（仮）
+        $userid = 64;
+
+        $postEntity = new PostEntity();
+        $categoryEntity = new CategoryEntity();
+        $tagEntity = new TagEntity();
+        $posttagEntity = new PostTagEntity();
+
+        //編集する記事テーブルレコード取得
+        $posts = $postEntity->getedit($_POST); //potsのでーた　category_id
+
+        //カテゴリ テーブル取得
+        $categories = $categoryEntity->get($userid);
+
+        //タグ テーブル取得
+        $tags = $tagEntity->get($userid);
+
+        //ポストID
+        $postid = $posts['id'];
+
+        //ポストタグ テーブル取得
+        $posttaglists = $posttagEntity->get($postid, $userid);
+
+        require './view/PostEditView.php';
+    }
+
+    public function edited()
+    {
+        //ユーザーID（仮）
+        $userid = 64;
+
+        var_dump($_POST);
+        $postEntity = new PostEntity();
+        $tagEntity = new TagEntity();
+        $posttagEntity = new PostTagEntity();
+
+        $postEntity->edit($_POST, $userid);
+        $postid = $_POST['postId'];
+        $posttagEntity->delete($postid, $userid);
+        $tags = $tagEntity->get($userid);
+        foreach ($_POST as $key => $post) {
+            foreach ($tags as $tag) {
+                if ($key == $tag['id']) {
+                    $posttagEntity->add($postid, $key, $userid);
+                }
+            }
+        }
+        header('Location: ../list');
+    }
+
+
 }

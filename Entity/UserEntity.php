@@ -4,7 +4,7 @@ require_once ('Entity.php');
 
 class UserEntity extends Entity
 {
-    function add($data) //saveDbRegisterData
+    function add(array $data) //saveDbRegisterData
     {
         $smt = $this->pdo->prepare('INSERT INTO users(name,email,password) VALUES (:name, :email, :password)');
         $pass = password_hash($data['password'], PASSWORD_DEFAULT);
@@ -15,7 +15,7 @@ class UserEntity extends Entity
         return $result;
     }
 
-    function get($data) //getDbUsersData
+    function get(array $data) //getDbUsersData
     {
         $smt = $this->pdo->prepare("SELECT * FROM users WHERE name=:name AND email=:email" );
         $smt->bindParam(':name',$data['username'],PDO::PARAM_STR);
@@ -25,7 +25,7 @@ class UserEntity extends Entity
         return $user;
     }
 
-    function logincheck($data) //logincheckDbUsersEmail
+    function logincheck(array $data) //logincheckDbUsersEmail
     {
         $smt = $this->pdo->prepare("SELECT * FROM users WHERE email=:email" );
         $smt->bindParam(':email',$data['email'],PDO::PARAM_STR);
@@ -34,7 +34,7 @@ class UserEntity extends Entity
         return $result;
     }
 
-    function countname($data) //countDbUsersName
+    function countname(array $data) //countDbUsersName
     {
         $smt = $this->pdo->prepare('SELECT COUNT(*) FROM users WHERE name=:name');
         $smt->bindParam(':name',$data['username'],PDO::PARAM_STR);
@@ -43,7 +43,7 @@ class UserEntity extends Entity
         return $count;
     }
 
-    function countemail($data) //countDbUsersEmail
+    function countemail(array $data) //countDbUsersEmail
     {
         $smt = $this->pdo->prepare('SELECT COUNT(*) FROM users WHERE email=:email');
         $smt->bindParam(':email',$data['email'],PDO::PARAM_STR);
