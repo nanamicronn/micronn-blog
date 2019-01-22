@@ -11,8 +11,8 @@ class TagController extends Controller
 {
     function index()
     {
-        //ユーザーID（仮）
-        $userid = 64;
+        //ユーザーID
+        $userid = $_SESSION['userid'];
 
         $tagEntity = new TagEntity();
 
@@ -24,8 +24,8 @@ class TagController extends Controller
 
     function add()
     {
-        //ユーザーID（仮）
-        $userid = 64;
+//        //ユーザーID
+        $userid = $_SESSION['userid'];
 
         $tagEntity = new TagEntity();
 
@@ -37,9 +37,6 @@ class TagController extends Controller
 
     function delete()
     {
-        //ユーザーID（仮）
-        $userid = 64;
-
         $tagEntity = new TagEntity();
 
         //タグ テーブル削除
@@ -50,9 +47,6 @@ class TagController extends Controller
 
     function edit()
     {
-        //ユーザーID（仮）
-        $userid = 64;
-
         $tagEntity = new TagEntity();
 
         //編集するタグ テーブルレコード取得
@@ -63,8 +57,8 @@ class TagController extends Controller
 
     function edited()
     {
-        //ユーザーID（仮）
-        $userid = 64;
+        //ユーザーID
+        $userid = $_SESSION['userid'];
 
         $tagEntity = new TagEntity();
 

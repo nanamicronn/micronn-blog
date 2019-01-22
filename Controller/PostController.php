@@ -11,8 +11,8 @@ class PostController extends Controller
 {
     public function index()
     {
-        //ユーザーID（仮）
-        $userid = 64;
+        //ユーザーID
+        $userid = $_SESSION['userid'];
 
         $categoryEntity = new CategoryEntity();
         $tagEntity = new TagEntity();
@@ -27,8 +27,8 @@ class PostController extends Controller
     }
     public  function add()
     {
-        //ユーザーID（仮）
-        $userid = 64;
+        //ユーザーID
+        $userid = $_SESSION['userid'];
 
         $postEntity = new PostEntity();
         $tagEntity = new TagEntity();
@@ -57,8 +57,8 @@ class PostController extends Controller
 
     public function list()
     {
-        //ユーザーID（仮）
-        $userid = 64;
+        //ユーザーID
+        $userid = $_SESSION['userid'];
 
         $postEntity = new PostEntity();
         $posttagEntity = new PostTagEntity();
@@ -81,9 +81,6 @@ class PostController extends Controller
 
     public function delete()
     {
-        //ユーザーID（仮）
-        $userid = 64;
-
         $postEntity = new PostEntity();
 
         //記事削除
@@ -94,8 +91,8 @@ class PostController extends Controller
 
     public function edit()
     {
-        //ユーザーID（仮）
-        $userid = 64;
+        //ユーザーID
+        $userid = $_SESSION['userid'];
 
         $postEntity = new PostEntity();
         $categoryEntity = new CategoryEntity();
@@ -122,8 +119,8 @@ class PostController extends Controller
 
     public function edited()
     {
-        //ユーザーID（仮）
-        $userid = 64;
+        //ユーザーID
+        $userid = $_SESSION['userid'];
 
         var_dump($_POST);
         $postEntity = new PostEntity();
@@ -143,6 +140,28 @@ class PostController extends Controller
         }
         header('Location: ../list');
     }
+    public function search()
+    {
+        //ユーザーID
+        $userid = $_SESSION['userid'];
 
+        $searchword = $_GET['searchvalue'];
+
+        $postEntity = new PostEntity();
+        $posttagEntity = new PostTagEntity();
+
+        $lists = $postEntity->search($_GET,$userid);
+        foreach ($lists as $list) {
+            $postid = $list['id'];
+            $posttaglists = $posttagEntity->get($postid,$userid);
+            foreach ($posttaglists as $posttag){
+                if($posttag['post_id'] == $list['id']){
+                    $taglists[$postid][]=$posttag['tag_name'];
+                }
+
+            }
+        }
+        require './view/ListView.php';
+    }
 
 }

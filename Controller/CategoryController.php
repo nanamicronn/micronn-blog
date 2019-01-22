@@ -11,8 +11,8 @@ class CategoryController extends Controller
 {
     function index()
     {
-        //ユーザーID（仮）
-        $userid = 64;
+        //ユーザーID
+        $userid = $_SESSION['userid'];
 
         $categoryEntity = new CategoryEntity();
 
@@ -24,8 +24,8 @@ class CategoryController extends Controller
 
     function add()
     {
-        //ユーザーID（仮）
-        $userid = 64;
+        //ユーザーID
+        $userid = $_SESSION['userid'];
 
         $categoryEntity = new CategoryEntity();
 
@@ -37,9 +37,6 @@ class CategoryController extends Controller
 
     function delete()
     {
-        //ユーザーID（仮）
-        $userid = 64;
-
         $categoryEntity = new CategoryEntity();
 
         //カテゴリ テーブル削除
@@ -50,9 +47,6 @@ class CategoryController extends Controller
 
     function edit()
     {
-        //ユーザーID（仮）
-        $userid = 64;
-
         $categoryEntity = new CategoryEntity();
 
         //編集するカテゴリテーブルレコード取得
@@ -63,8 +57,8 @@ class CategoryController extends Controller
 
     function edited()
     {
-        //ユーザーID（仮）
-        $userid = 64;
+        //ユーザーID
+        $userid = $_SESSION['userid'];
 
         $categoryEntity = new CategoryEntity();
 

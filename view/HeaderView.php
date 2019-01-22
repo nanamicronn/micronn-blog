@@ -12,10 +12,10 @@
         <li><a href="http://localhost:8888/blog/post">記事作成</a></li>
         <li><a href="http://localhost:8888/blog/category">カテゴリ作成</a></li>
         <li><a href="http://localhost:8888/blog/tag">タグ作成</a></li>
-        <li><a href="../Controller/logout.php">ログアウト</a></li>
+        <li><a href="http://localhost:8888/blog/logout">ログアウト</a></li>
     </ul>
-    <form action="../Controller/list.php" method="get">
-        <input type="text" name="searchvalue" value="">
+    <form action="./search" method="get">
+        <input type="text" name="searchvalue" value="<?php echo isset($searchword) ? $searchword : '';?>">
         <input type="submit" name="search" value="検索">
     </form>
 </div>

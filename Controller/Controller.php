@@ -12,10 +12,9 @@ class Controller
      */
     function __construct()
     {
-//        if(!isset($_SESSION['userid'])){
-//            header("Location: ../view/v_login.php");
-//            exit;
-//        }
-//        $this->userid = $_SESSION['userid'];
+        if(!isset($_SESSION['userid'])){
+            header("Location: ./login");
+            exit;
+        }
     }
 }

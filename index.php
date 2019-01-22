@@ -1,5 +1,6 @@
 <?php
 ini_set('display_errors', 1);
+session_start();
 
 //header('location: Controller/login.php');
 
@@ -7,15 +8,14 @@ require_once ('Route/RequestUrl.php');
 require_once('Controller/PostController.php');
 require_once('Controller/CategoryController.php');
 require_once('Controller/TagController.php');
-//require_once ('Controller/login.php');
-//require_once ('Controller/register.php');
+require_once('Controller/UserController.php');
 
 $request = new RequestUrl();
 $url = $request->getPathInfo();
 
 // routing
 
-echo $url;
+//echo $url;
 
 switch ($url){
     case '/post':
@@ -47,6 +47,11 @@ switch ($url){
         $postController = new PostController();
         $postController->edited();
     break;
+
+    case '/search':
+        $postController = new PostController();
+        $postController->search();
+        break;
 
     case '/category':
         $categoryController = new CategoryController();
@@ -98,5 +103,24 @@ switch ($url){
         $tagController->edited();
     break;
 
+    case '/logout':
+        $userController = new UserController();
+        $userController->logout();
+    break;
+
+    case '/register':
+        $userController = new UserController();
+        $userController->register();
+    break;
+
+    case '/login':
+        $userController = new UserController();
+        $userController->login();
+    break;
+
+    default:
+        $userController = new UserController();
+        $userController->other();
+    break;
 
 }
