@@ -2,6 +2,7 @@
 ini_set('display_errors', 1);
 
 require_once ('Controller.php');
+require_once ('./Csrf.php');
 require_once ('./Entity/PostEntity.php');
 require_once ('./Entity/CategoryEntity.php');
 require_once ('./Entity/TagEntity.php');

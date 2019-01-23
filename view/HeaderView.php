@@ -16,7 +16,7 @@
     </ul>
     <form action="./search" method="get">
         <input type="text" name="searchvalue" value="<?php echo isset($searchword) ? $searchword : '';?>">
-        <input type="hidden" name="csrf_token" value="<?php Csrf::get()?>">
+        <input type="hidden" name="csrf_token" value="<?php echo Csrf::get()?>">
         <input type="submit" name="search" value="検索">
     </form>
 </div>

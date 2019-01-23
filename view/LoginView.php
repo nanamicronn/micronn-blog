@@ -17,7 +17,7 @@
             <input type="password" class="form-controle" name="password" placeholder="Password" value="<?php echo isset($_POST['password']) ? $_POST['password'] :'';?>"> <!--required-->
         </div>
         <p class="login-err"><?php echo isset($err['password']) ? $err['password'] :''; ?></p>
-        <input type="hidden" name="csrf_token" value="<?php Csrf::get()?>">
+        <input type="hidden" name="csrf_token" value="<?php echo Csrf::get()?>">
         <button type="submit" class="btn" name="login">Login</button>
         <p>Dont't have an a ccount?  <a href="./register">createAccount</a></p>
     </form>

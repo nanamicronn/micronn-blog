@@ -25,6 +25,7 @@
         </div>
         <p class="login-err"><?php echo isset($err['password']) ? $err['password'] :''; ?></p>
 
+        <input type="hidden" name="csrf_token" value="<?php echo Csrf::get()?>">
         <button type="submit" class="btn" name="register">CreateAccount</button>
         <p>Already have an account?   <a href="./login">Login here</a></p>
     </form>

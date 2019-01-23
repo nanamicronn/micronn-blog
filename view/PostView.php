@@ -23,7 +23,7 @@
             <span><input type="checkbox" name="<?php echo $tag['id'];?>" value="<?php echo $tag['name'];?> "><?php echo $tag['name'];?></span>
         <?php }?>
     </p>
-    <input type="hidden" name="csrf_token" value="<?php Csrf::get()?>">
+    <input type="hidden" name="csrf_token" value="<?php echo Csrf::get()?>">
     <p><input name='save' type='submit' value='投稿'></p>
 </div>
 </form>

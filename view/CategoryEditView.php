@@ -6,7 +6,7 @@
         <div class="category-input">
             <input type="text" name="category" size="40" value="<?php echo $editcategory['name']?>">
             <input type="hidden" name="categoryId" size="40" value="<?php echo $editcategory['id']?>">
-            <input type="hidden" name="csrf_token" value="<?php Csrf::get()?>">
+            <input type="hidden" name="csrf_token" value="<?php echo Csrf::get()?>">
             <input name='editok' type='submit' value='完了'>
         </div>
     </form>

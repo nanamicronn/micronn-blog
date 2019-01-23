@@ -25,13 +25,13 @@ class Csrf
     public static function check()
     {
         //$csrf_tokenにセッション内のトークンを代入
-        $csrf_token = (isset($_SESSION['csrf_token'])) ? $_SESSION['csrf_token'] : null;
+        $csrf_token = $_SESSION['csrf_token'] ?? null;
 
         $_SESSION['csrf_token'] = null;
 
-//        if(filter_input(INPUT_POST, 'csrf_token') !== $csrf_token){
-//            throw new InvalidArgumentException(Exception::INVALID_C)
-//        }
+        if(filter_input(INPUT_POST, 'csrf_token') !== $csrf_token){
+            exit('トークンエラー');
+        }
         return true;
     }
 }

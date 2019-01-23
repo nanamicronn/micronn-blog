@@ -11,7 +11,6 @@ class UserController
     public function login()
     {
         if(isset($_SESSION['userid'])){
-            Csrf::check();
             header('location: ./list');
         }
         $userEntity = new UserEntity();
@@ -62,7 +61,6 @@ class UserController
             header('location: ./list');
         }
         else {
-            Csrf::check();
             require './view/LoginView.php';
         }
 
@@ -78,7 +76,6 @@ class UserController
     public function register()
     {
         if(isset($_SESSION['userid'])){
-            Csrf::check();
             header('location: ./list');
         }
         $userEntity = new UserEntity();
