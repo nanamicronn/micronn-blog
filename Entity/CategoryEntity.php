@@ -4,7 +4,7 @@ require_once ('Entity.php');
 
 class CategoryEntity extends Entity
 {
-    function add(array $data, int $userid) //saveDbCategoryData
+    function add(array $data, int $userid) :void
     {
         $smt = $this->pdo->prepare('INSERT INTO categories(name,user_id) VALUES (:name, :user_id)');
         $smt->bindParam(':name',$data['category'],PDO::PARAM_STR);
@@ -12,7 +12,7 @@ class CategoryEntity extends Entity
         $smt->execute();
     }
 
-    function get($userid) //getDbCategoryData
+    function get($userid) :array
     {
         $smt = $this->pdo->prepare("SELECT * FROM categories WHERE user_id = :user_id ORDER BY id DESC");
         $smt->bindParam(':user_id',$userid,PDO::PARAM_STR);
@@ -21,14 +21,14 @@ class CategoryEntity extends Entity
         return $categories;
     }
 
-    function delete($data) //deleteDbCategoryData
+    function delete($data) :void
     {
         $smt = $this->pdo->prepare('DELETE FROM categories WHERE id=:categoryId');
         $smt->bindParam(':categoryId',$data['categoryId'],PDO::PARAM_STR);
         $smt->execute();
     }
 
-    function edit($data,$userid) //editDbCategoryData
+    function edit($data,$userid) :void
     {
         $smt = $this->pdo->prepare('UPDATE categories SET name = :name WHERE user_id=:user_id AND id=:categoryId');
         $smt->bindParam(':name',$data['category'],PDO::PARAM_STR);
@@ -38,7 +38,7 @@ class CategoryEntity extends Entity
     }
 
 
-    function getedit($data) //editselectDbCategoryData
+    function getedit($data) :array
     {
         $smt = $this->pdo->prepare("SELECT * FROM categories WHERE id=:categoryId");
         $smt->bindParam(':categoryId',$data['categoryId'],PDO::PARAM_STR);

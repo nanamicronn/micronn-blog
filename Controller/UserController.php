@@ -38,12 +38,12 @@ class UserController
                 }
             }
             if($isErr != true) {
-                if ($userEntity->logincheck($_POST) == false) {
+                $user = $userEntity->logincheck($_POST);
+                if (empty($user)) {
                     $err['email'] = 'メールアドレスまたはパスワードが一致しません。';
                     $err['password'] = 'メールアドレスまたはパスワードが一致しません。';
                     $isErr = true;
                 }
-                $user = $userEntity->logincheck($_POST);
             }
             if($isErr != true) {
                 if (!password_verify($_POST['password'],$user['password'])){
