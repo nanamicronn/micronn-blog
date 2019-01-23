@@ -24,6 +24,8 @@ class CategoryController extends Controller
 
     function add()
     {
+        Csrf::check();
+
         //ユーザーID
         $userid = $_SESSION['userid'];
 
@@ -37,6 +39,8 @@ class CategoryController extends Controller
 
     function delete()
     {
+        Csrf::check();
+
         $categoryEntity = new CategoryEntity();
 
         //カテゴリ テーブル削除
@@ -47,6 +51,8 @@ class CategoryController extends Controller
 
     function edit()
     {
+        Csrf::check();
+
         $categoryEntity = new CategoryEntity();
 
         //編集するカテゴリテーブルレコード取得
@@ -57,6 +63,8 @@ class CategoryController extends Controller
 
     function edited()
     {
+        Csrf::check();
+
         //ユーザーID
         $userid = $_SESSION['userid'];
 

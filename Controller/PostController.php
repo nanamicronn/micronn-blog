@@ -27,6 +27,8 @@ class PostController extends Controller
     }
     public  function add()
     {
+        Csrf::check();
+
         //ユーザーID
         $userid = $_SESSION['userid'];
 
@@ -81,6 +83,8 @@ class PostController extends Controller
 
     public function delete()
     {
+        Csrf::check();
+
         $postEntity = new PostEntity();
 
         //記事削除
@@ -91,6 +95,8 @@ class PostController extends Controller
 
     public function edit()
     {
+        Csrf::check();
+
         //ユーザーID
         $userid = $_SESSION['userid'];
 
@@ -119,6 +125,8 @@ class PostController extends Controller
 
     public function edited()
     {
+        Csrf::check();
+
         //ユーザーID
         $userid = $_SESSION['userid'];
 
@@ -142,6 +150,8 @@ class PostController extends Controller
     }
     public function search()
     {
+        Csrf::check();
+
         //ユーザーID
         $userid = $_SESSION['userid'];
 

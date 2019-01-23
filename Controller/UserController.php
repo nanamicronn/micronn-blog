@@ -2,6 +2,7 @@
 //ini_set('display_errors', 1);
 
 require_once ('Controller.php');
+require_once ('./Csrf.php');
 require_once ('./Entity/UserEntity.php');
 require_once ('./Validation.php');
 
@@ -10,6 +11,7 @@ class UserController
     public function login()
     {
         if(isset($_SESSION['userid'])){
+            Csrf::check();
             header('location: ./list');
         }
         $userEntity = new UserEntity();
@@ -55,10 +57,12 @@ class UserController
         }
 
         if(isset($_POST['login']) && $isErr == false) {
+            Csrf::check();
             $_SESSION['userid'] = $user['id'];
             header('location: ./list');
         }
         else {
+            Csrf::check();
             require './view/LoginView.php';
         }
 
@@ -74,6 +78,7 @@ class UserController
     public function register()
     {
         if(isset($_SESSION['userid'])){
+            Csrf::check();
             header('location: ./list');
         }
         $userEntity = new UserEntity();
@@ -155,6 +160,7 @@ class UserController
         }
 
         if(isset($_POST['register']) && $isErr == false){
+            Csrf::check();
             $result = $userEntity->add($_POST);
             if($result) {
                 $user = $userEntity->get($_POST);

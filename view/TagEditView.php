@@ -6,6 +6,7 @@
         <div class="tag-input">
             <input type="text" name="tag" size="40" value="<?php echo $edittag['name']?>">
             <input type="hidden" name="tagId" size="40" value="<?php echo $edittag['id']?>">
+            <input type="hidden" name="csrf_token" value="<?php Csrf::get()?>">
             <input name='editok' type='submit' value='完了'>
         </div>
     </form>

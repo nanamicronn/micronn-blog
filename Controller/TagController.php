@@ -24,6 +24,8 @@ class TagController extends Controller
 
     function add()
     {
+        Csrf::check();
+
 //        //ユーザーID
         $userid = $_SESSION['userid'];
 
@@ -37,6 +39,8 @@ class TagController extends Controller
 
     function delete()
     {
+        Csrf::check();
+
         $tagEntity = new TagEntity();
 
         //タグ テーブル削除
@@ -47,6 +51,8 @@ class TagController extends Controller
 
     function edit()
     {
+        Csrf::check();
+
         $tagEntity = new TagEntity();
 
         //編集するタグ テーブルレコード取得
@@ -57,6 +63,8 @@ class TagController extends Controller
 
     function edited()
     {
+        Csrf::check();
+
         //ユーザーID
         $userid = $_SESSION['userid'];
 
